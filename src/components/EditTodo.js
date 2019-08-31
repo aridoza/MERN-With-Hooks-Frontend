@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+//const url = 'https://mern-backend-netlify-practice.herokuapp.com/';
+const url = 'https://mern-backend-netlify-practice.herokuapp.com/';
 export default class EditTodo extends Component {
   state = {
     todo_description: '',
@@ -9,8 +11,9 @@ export default class EditTodo extends Component {
     todo_completed: false
   }
 
+
   async componentDidMount() {
-    const response = await axios.get('http://localhost:4000/todos/'+this.props.match.params.id);
+    const response = await axios.get(url+this.props.match.params.id);
     this.setState({
       todo_description: response.data.todo_description,
       todo_responsible: response.data.todo_responsible,
@@ -54,7 +57,7 @@ export default class EditTodo extends Component {
     };
 
     console.log('Updated todo to post: ', updatedTodo);
-    axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, updatedTodo)
+    axios.post(url+'update/'+this.props.match.params.id, updatedTodo)
       .then(res => {
         console.log('Updated Todo response: ', res.data)
       });
@@ -65,7 +68,7 @@ export default class EditTodo extends Component {
   handleDelete = (e) => {
     e.preventDefault();
     //console.log('params id: ', this.props.match.params.id);
-    axios.get('http://localhost:4000/todos/delete/'+this.props.match.params.id)
+    axios.get(url+'delete/'+this.props.match.params.id)
       .then(console.log('Deleted from frontend'))
       .catch(err => {
         console.log('error deleting from frontend: ', err)

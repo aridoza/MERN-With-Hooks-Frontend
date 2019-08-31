@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
 import './TodosList.css';
+
+
+const url = 'https://mern-backend-netlify-practice.herokuapp.com/';
 
 const Todo = (props) => {
   return (
@@ -23,7 +25,7 @@ export default class TodosList extends Component {
   }
 
   async componentDidMount() {
-    const response = await axios.get('http://localhost:4000/todos');
+    const response = await axios.get(url);
     if (response.data.length > 0) {
       this.setState({
         todos: response.data

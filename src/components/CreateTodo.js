@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const url = 'https://mern-backend-netlify-practice.herokuapp.com/';
+
 export default class CreateTodo extends Component {
   state = {
     todo_description: '',
@@ -42,7 +44,7 @@ export default class CreateTodo extends Component {
       todo_completed: this.state.todo_completed
     };
 
-    axios.post('http://localhost:4000/todos/add', newTodo)
+    axios.post(url+'add', newTodo)
       .then(res => console.log('Added todo from onSubmit: ', res.data));
 
     this.setState({
