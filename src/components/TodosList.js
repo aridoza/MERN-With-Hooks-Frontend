@@ -4,7 +4,7 @@ import axios from 'axios';
 import './TodosList.css';
 
 
-const url = 'https://mern-backend-netlify-practice.herokuapp.com/';
+const url = 'https://mern-backend-netlify-practice.herokuapp.com/todos/';
 
 const Todo = (props) => {
   return (
