@@ -4,7 +4,7 @@ import axios from 'axios';
 import './TodosList.css';
 
 
-const url = 'https://mern-backend-netlify-practice.herokuapp.com/todos/';
+const url = 'https://mern-backend-netlify-practice.herokuapp.com/';
 
 const Todo = (props) => {
   return (
@@ -26,6 +26,7 @@ export default class TodosList extends Component {
 
   async componentDidMount() {
     const response = await axios.get(url);
+    console.log('response getting todos: ', response.data)
     if (response.data.length > 0) {
       this.setState({
         todos: response.data
